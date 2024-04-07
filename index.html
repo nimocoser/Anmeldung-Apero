@@ -11,54 +11,40 @@
         color: white;
         font-family: 'Poppins';
         text-align: center;
+        margin: 0;
+        padding: 0;
     }
     h1 {
-        font-size: 30px;
+        font-size: 24px;
         font-weight: 700;
-        margin-bottom: 40px;
+        margin-bottom: 20px;
     }
     button {
-        height: 100px;
-        width: 400px;
+        height: 60px;
+        width: 200px;
         background-color: transparent;
         color: white;
-        border-radius: 20px;
+        border-radius: 10px;
         border: 2px solid white;
-        padding: 10px 20px;
-        font-size: 20px;
+        font-size: 16px;
         cursor: pointer;
         transition: background-color 0.3s, color 0.3s;
-        margin-bottom: 40px;
+        margin-bottom: 20px;
     }
     button:hover {
         background-color: white;
         color: #170c7a; /* Dunkelblau */
     }
-    .kek {
-        font-size: 18px;
-        margin-bottom: 20px;
-    }
-    .kek2 {
-        font-size: 20px;
-        margin-bottom: 60px;
-    }
-    .kek3 {
-        font-size: 20px;
-        margin-bottom: 20px;
-    }
-    .kek4 {
-        font-size: 20px;
-        margin-bottom: 60px;
-    }
     .cover-img {
-        width: 200px;
-        height: 200px;
+        width: 150px;
+        height: 150px;
         cursor: pointer;
-        border-radius: 20px;
+        border-radius: 10px;
+        margin-bottom: 20px;
     }
     .volume-slider-container {
-        width: 200px;
-        margin: 20px auto; /* Zentriert den Tonregler */
+        width: 80%;
+        margin: 0 auto; /* Zentriert den Tonregler */
     }
     .volume-slider {
         width: 100%;
@@ -97,14 +83,7 @@
 </audio>
 
 <h1>Anmeldung Party Unleashed</h1>
-<p class="kek2">19.04.2024 ab 17.00 Uhr</p>
-<p class="kek">Mit nur einem Klick sich anmelden</p>
 <button onclick="sendEmail()">Ich melde mich an</button>
-
-<p class="kek3">Gönnt euch den Song und bis bald!</p>
-
-<p class="kek4">Nico</p>
-
 <img class="cover-img" src="coverbild.png" alt="Coverbild" onclick="toggleAudio()">
 <div class="volume-slider-container">
     <input class="volume-slider" type="range" min="0" max="1" step="0.01" value="0.5" onchange="changeVolume(this.value)">
@@ -125,6 +104,14 @@
 
     function changeVolume(volume) {
         audio.volume = volume;
+        updateThumbSize(volume);
+    }
+
+    function updateThumbSize(volume) {
+        var thumb = document.querySelector(".volume-slider::-webkit-slider-thumb");
+        var thumbSize = 20 + volume * 30; // Startgröße plus Lautstärkeabhängige Größe
+        thumb.style.width = thumbSize + "px";
+        thumb.style.height = thumbSize + "px";
     }
 
     // Initialize EmailJS with your user ID
@@ -142,4 +129,4 @@
     }
 </script>
 </body>
-</html>
+</html> 
