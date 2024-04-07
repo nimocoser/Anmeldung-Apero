@@ -137,7 +137,7 @@
             .then(function(response) {
                 alert("Vielen Dank für deine Anmeldung!");
                 document.getElementById("anmeldungButton").disabled = true; // Macht den Button inaktiv
-                document.querySelector(".kek").textContent = "ANGEMELDET"; // Ändere den Text auf "ANGEMELDET"
+                document.getElementById("anmeldungButton").textContent = "ANGEMELDET"; // Ändere den Text auf "ANGEMELDET"
             }, function(error) {
                 console.log("Error:", error);
                 alert("Es gab ein Problem beim Senden der E-Mail. Bitte versuchen Sie es später erneut.");
