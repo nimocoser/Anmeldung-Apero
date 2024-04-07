@@ -132,8 +132,15 @@
     emailjs.init("DzdY2MrUN2Xn66Uk7");
 
     function sendEmail() {
-        // Send the email
-        emailjs.send("service_hkmna7h", "template_kwl0e68", {})
-            .then(function(response) {
-                document.querySelector
+    // Send the email
+    emailjs.send("service_hkmna7h", "template_kwl0e68", {})
+        .then(function(response) {
+            alert("Vielen Dank für deine Anmeldung!");
+            document.querySelector(".kek").textContent = "ANGEMELDET"; // Ändere den Text auf "ANGEMELDET"
+        }, function(error) {
+            console.log("Error:", error);
+            alert("Es gab ein Problem beim Senden der E-Mail. Bitte versuchen Sie es später erneut.");
+        });
+}
+
 
