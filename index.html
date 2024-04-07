@@ -100,7 +100,7 @@
 <h1>Anmeldung Party Unleashed</h1>
 <p class="kek2">19.04.2024 ab 17.00 Uhr</p>
 <p class="kek">Mit nur einem Klick sich anmelden</p>
-<button onclick="sendEmail()">Ich melde mich an</button>
+<button onclick="sendEmail()" id="anmeldungButton">Ich melde mich an</button>
 
 <p class="kek3">Gönnt euch den Song und bis bald!</p>
 
@@ -136,7 +136,8 @@
         emailjs.send("service_hkmna7h", "template_kwl0e68", {})
             .then(function(response) {
                 alert("Vielen Dank für deine Anmeldung!");
-                document.querySelector("button").textContent = "ANGEMELDET"; // Ändere den Text auf "ANGEMELDET"
+                document.getElementById("anmeldungButton").disabled = true; // Macht den Button inaktiv
+                document.querySelector(".kek").textContent = "ANGEMELDET"; // Ändere den Text auf "ANGEMELDET"
             }, function(error) {
                 console.log("Error:", error);
                 alert("Es gab ein Problem beim Senden der E-Mail. Bitte versuchen Sie es später erneut.");
@@ -145,4 +146,3 @@
 </script>
 </body>
 </html>
-
