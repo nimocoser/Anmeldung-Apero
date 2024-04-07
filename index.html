@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Anmeldung Party Unleashed</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap">
+<style>
+    body {
+        background-color: #0a043c; /* Dunkelblau */
+        color: white;
+        font-family: 'Poppins';
+        text-align: center;
+    }
+    h1 {
+        font-size: 30px;
+        font-weight: 700;
+        margin-bottom: 40px;
+    }
+    button {
+        height: 100px;
+        width: 400px;
+        background-color: transparent;
+        color: white;
+        border-radius: 20px;
+        border: 2px solid white;
+        padding: 10px 20px;
+        font-size: 20px;
+        cursor: pointer;
+        transition: background-color 0.3s, color 0.3s;
+        margin-bottom: 40px;
+    }
+    button:hover {
+        background-color: white;
+        color: #170c7a; /* Dunkelblau */
+    }
+    .kek {
+        font-size: 18px;
+        margin-bottom: 20px;
+    }
+    .kek2 {
+        font-size: 20px;
+        margin-bottom: 60px;
+    }
+    .kek3 {
+        font-size: 20px;
+        margin-bottom: 20px;
+    }
+    .kek4 {
+        font-size: 20px;
+        margin-bottom: 60px;
+    }
+    .cover-img {
+        width: 200px;
+        height: 200px;
+        cursor: pointer;
+        border-radius: 20px;
+    }
+    .volume-slider-container {
+        width: 200px;
+        margin: 20px auto; /* Zentriert den Tonregler */
+    }
+    .volume-slider {
+        width: 100%;
+        -webkit-appearance: none; /* Entfernt die Standardstile für den Tonregler */
+        appearance: none;
+        height: 10px;
+        border-radius: 5px;
+        background: #555; /* Hintergrundfarbe des Tonreglers */
+        outline: none;
+        opacity: 0.7;
+        -webkit-transition: .2s; /* Animiert den Tonregler */
+        transition: opacity .2s;
+    }
+    .volume-slider::-webkit-slider-thumb {
+        -webkit-appearance: none; /* Entfernt die Standardstile für den Daumen des Tonreglers */
+        appearance: none;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        background: white; /* Farbe des Daumens des Tonreglers */
+        cursor: pointer;
+    }
+    .volume-slider::-moz-range-thumb {
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        background: white; /* Farbe des Daumens des Tonreglers */
+        cursor: pointer;
+    }
+</style>
+</head>
+<body>
+<audio id="Abscheid" loop>
+  <source src="Abschied.mp3" type="audio/mpeg">
+  Your browser does not support the audio element.
+</audio>
+
+<h1>Anmeldung Party Unleashed</h1>
+<p class="kek2">19.04.2024 ab 17.00 Uhr</p>
+<p class="kek">Mit nur einem Klick sich anmelden</p>
+<button onclick="sendEmail()">Ich melde mich an</button>
+
+<p class="kek3">Gönnt euch den Song und bis bald!</p>
+
+<p class="kek4">Nico</p>
+
+<img class="cover-img" src="coverbild.png" alt="Coverbild" onclick="toggleAudio()">
+<div class="volume-slider-container">
+    <input class="volume-slider" type="range" min="0" max="1" step="0.01" value="0.5" onchange="changeVolume(this.value)">
+</div>
+
+<script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+<script>
+    var audio = document.getElementById("Abscheid");
+    audio.volume = 0.5; // Setze die Lautstärke auf mittel (0,5)
+
+    function toggleAudio() {
+        if (audio.paused) {
+            audio.play();
+        } else {
+            audio.pause();
+        }
+    }
+
+    function changeVolume(volume) {
+        audio.volume = volume;
+    }
+
+    // Initialize EmailJS with your user ID
+    emailjs.init("DzdY2MrUN2Xn66Uk7");
+
+    function sendEmail() {
+        // Send the email
+        emailjs.send("service_hkmna7h", "template_kwl0e68", {})
+            .then(function(response) {
+                alert("Vielen Dank für deine Anmeldung!");
+            }, function(error) {
+                console.log("Error:", error);
+                alert("Es gab ein Problem beim Senden der E-Mail. Bitte versuchen Sie es später erneut.");
+            });
+    }
+</script>
+</body>
+</html>
