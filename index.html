@@ -101,7 +101,6 @@
 
 <p class="kek5">Cover antippen zum abspielen vom Song</p>
 
-<script src="https://cdn.emailjs.com/dist/email.min.js"></script>
 <script>
     var audio = document.getElementById("Abscheid");
     audio.volume = 0.5; // Setze die Lautstärke auf mittel (0,5)
@@ -116,22 +115,6 @@
 
     function changeVolume(volume) {
         audio.volume = volume;
-    }
-
-    // Initialize EmailJS with your user ID
-    emailjs.init("DzdY2MrUN2Xn66Uk7");
-
-    function sendEmail() {
-        // Send the email
-        emailjs.send("service_hkmna7h", "template_kwl0e68", {})
-            .then(function(response) {
-                alert("Vielen Dank für deine Anmeldung!");
-                document.getElementById("anmeldungButton").disabled = true; // Macht den Button inaktiv
-                document.getElementById("anmeldungButton").textContent = "ANGEMELDET"; // Ändere den Text auf "ANGEMELDET"
-            }, function(error) {
-                console.log("Error:", error);
-                alert("Es gab ein Problem beim Senden der E-Mail. Bitte versuchen Sie es später erneut.");
-            });
     }
 </script>
 </body>
